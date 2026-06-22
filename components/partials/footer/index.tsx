@@ -4,7 +4,7 @@ import { Link } from "@/components/navigation";
 import Image from "next/image";
 import { Icon } from "@/components/ui/icon";
 
-const DashBoardFooter = async () => {
+const DashBoardFooter = () => {
   return (
     <FooterContent>
       <div className=" md:flex  justify-between text-default-600 hidden">

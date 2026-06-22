@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "@/components/navigation";
+import { signInAdmin } from "@/lib/auth";
 
 const schema = z.object({
   email: z.string().email({ message: "Your email is invalid." }),
@@ -46,10 +47,15 @@ const LoginForm = () => {
   const onSubmit = (data: z.infer<typeof schema>) => {
     startTransition(async () => {
       try {
-        router.push("/dashboard/analytics");
-        toast.success("Successfully logged in");
+        const result = await signInAdmin(data.email, data.password);
+        if (result?.token) {
+          toast.success("Successfully logged in");
+          router.push("/dashboard");
+        } else {
+          toast.error("Sign in failed. Please try again.");
+        }
       } catch (err: any) {
-        toast.error(err.message);
+        toast.error(err?.message || "Failed to sign in. Please check your credentials.");
       }
     });
   };

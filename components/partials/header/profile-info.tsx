@@ -1,4 +1,6 @@
+'use client'
 
+import React from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,9 +16,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Icon } from "@/components/ui/icon"
 import Image from "next/image";
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
+import { useLocale } from 'next-intl';
+import { clearAuth } from '@/lib/auth';
 
-const ProfileInfo = async () => {
+const ProfileInfo = () => {
+  const router = useRouter();
+  const locale = useLocale();
+
+  const handleLogout = () => {
+    clearAuth();
+    router.replace('/signin', { locale });
+  };
+
   return (
     <div className="md:block hidden">
       <DropdownMenu>
@@ -172,20 +184,16 @@ const ProfileInfo = async () => {
           </DropdownMenuGroup>
           <DropdownMenuSeparator className="mb-0 dark:bg-background" />
           <DropdownMenuItem
-
             className="flex items-center gap-2 text-sm font-medium text-default-600 capitalize my-1 px-3 cursor-pointer"
           >
-
-            <div>
-              <form
-               
-              >
-                <button type="submit" className=" w-full  flex  items-center gap-2" >
-                  <Icon icon="heroicons:power" className="w-4 h-4" />
-                  Log out
-                </button>
-              </form>
-            </div>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="w-full flex items-center gap-2"
+            >
+              <Icon icon="heroicons:power" className="w-4 h-4" />
+              Log out
+            </button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

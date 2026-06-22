@@ -6,7 +6,7 @@ const config: DocsThemeConfig = {
   logo: (
     <span className=" inline-flex gap-2.5 items-center">
       <DashBoardLogo className="  text-default-900 h-8 w-8 [&>path:nth-child(3)]:text-background [&>path:nth-child(2)]:text-background" />
-      <span className="  text-lg font-bold text-default ">HadiBRQ</span>
+      <span className="  text-lg font-bold text-default ">PiQoda Admin</span>
     </span>
   ),
   project: {

@@ -13,7 +13,7 @@ import LocalSwitcher from './locale-switcher'
 import HeaderLogo from "./header-logo"
 
 
-const DashBoardHeader = async () => {
+const DashBoardHeader = () => {
     return (
         <>
             <HeaderContent>
