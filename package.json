@@ -105,7 +105,6 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@next/swc-win32-x64-msvc": "^14.2.3",
     "@tailwindcss/postcss": "^4.0.7",
     "@types/leaflet": "^1.9.12",
     "@types/node": "^20",
